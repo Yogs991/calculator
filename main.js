@@ -2,6 +2,16 @@
 // const secondNumber
 // const operator
 
+const allBtns = document.querySelectorAll(".btn");
+allBtns.forEach(element=>{
+    element.addEventListener("click",buttons);
+});
+
+function buttons(e) {
+  const value = e.target.value;
+  document.getElementById("demo").innerHTML = value;  
+}
+
 function add(){
 
 }
