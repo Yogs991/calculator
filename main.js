@@ -2,7 +2,7 @@
 // const secondNumber
 // const operator
 
-const allBtns = document.querySelectorAll(".btn");
+const allBtns = document.querySelectorAll(".numberBtn");
 allBtns.forEach(element=>{
     element.addEventListener("click",buttons);
 });
