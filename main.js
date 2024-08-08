@@ -1,26 +1,28 @@
-const firstNumber="";
-const secondNumber = "";
-const firstOperator = null;
-const secondOperator = null;
-
+let firstNumber="";
+let secondNumber = "";
+let operator = "";
 const display = document.querySelector("#display");
 const clear = document.querySelector("#clearBtn");
 const allBtns = document.querySelectorAll(".numberBtn");
-const operator = document.querySelectorAll(".mathBtn");
+const operatorBtn = document.querySelectorAll(".mathBtn");
 
 allBtns.forEach(element=>{
     element.addEventListener("click",buttons);
 });
 
-operator.forEach(element=>{
-  element.addEventListener("click", buttons);
+operatorBtn.forEach(element=>{
+  element.addEventListener("click", operate);
 });
 
 clear.addEventListener("click", clearDisplay);
 
 function buttons(input) {
-  const value = input.target.value;
-  display.value += value;
+  if(operator ===""){
+    firstNumber = input.target.value;
+    display.value += firstNumber;
+  }else{
+    secondNumber = input.target.value;
+  }
 }
 
 function clearDisplay(){
@@ -44,18 +46,25 @@ function divide(firstNumber, secondNumber){
 }
 
 function operate(operator, firstNumber, secondNumber){
-  switch(operator){
-    case "+":
-      return add(firstNumber, secondNumber);
-      break;
-    case "-":
-      return subtract(firstNumber, secondNumber);
-      break;
-    case "*":
-      return multiply(firstNumber, secondNumber);
-      break;
-    case "/":
-      return divide(firstNumber, secondNumber);
-      break;
+  operator = input.target.value;
+  if(operator !== "="){
+    display.value += operator;
+  }else{
+    switch(operator){
+      case "+":
+        return add(firstNumber, secondNumber);
+        break;
+      case "-":
+        return subtract(firstNumber, secondNumber);
+        break;
+      case "*":
+        return multiply(firstNumber, secondNumber);
+        break;
+      case "/":
+        return divide(firstNumber, secondNumber);
+        break;
+      default:
+        break;
+    }
   }
 }
