@@ -1,70 +1,64 @@
-let firstNumber="";
-let secondNumber = "";
+let number1="";
+let number2 = "";
 let operator = "";
 const display = document.querySelector("#display");
 const clear = document.querySelector("#clearBtn");
-const allBtns = document.querySelectorAll(".numberBtn");
-const operatorBtn = document.querySelectorAll(".mathBtn");
+const allBtns = document.querySelectorAll(".number");
+const operatorBtn = document.querySelectorAll(".operator");
+const equalButton = document.querySelector("#equalBtn");
 
 allBtns.forEach(element=>{
     element.addEventListener("click",buttons);
 });
 
 operatorBtn.forEach(element=>{
-  element.addEventListener("click", operate);
+  element.addEventListener("click", buttons);// add new function to save second number when clicked
 });
 
 clear.addEventListener("click", clearDisplay);
 
+equalButton.addEventListener("click",operate);
+
 function buttons(input) {
   if(operator ===""){
-    firstNumber = input.target.value;
-    display.value += firstNumber;
+    number1 = input.target.value;
+    display.value += number1;
   }else{
-    secondNumber = input.target.value;
+    number2 = input.target.value;
   }
 }
 
 function clearDisplay(){
   display.value = "";
 }
-
-function add(firstNumber, secondNumber){
-  return firstNumber + secondNumber;
+function add(number1, number2){
+  return number1 + number2;
+}
+function subtract(number1, number2) {
+    return number1 - number2;
+}
+function multiply(number1, number2) {
+    return number1*number2;
+}
+function divide(number1, number2){
+  return number1/number2;
 }
 
-function subtract(firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
-}
-
-function multiply(firstNumber, secondNumber) {
-    return firstNumber*secondNumber;
-}
-
-function divide(firstNumber, secondNumber){
-  return firstNumber/secondNumber;
-}
-
-function operate(operator, firstNumber, secondNumber){
-  operator = input.target.value;
-  if(operator !== "="){
-    display.value += operator;
-  }else{
+function operate(operator, number1, number2){
     switch(operator){
       case "+":
-        return add(firstNumber, secondNumber);
+        return add(number1, number2);
         break;
       case "-":
-        return subtract(firstNumber, secondNumber);
+        return subtract(number1, number2);
         break;
       case "*":
-        return multiply(firstNumber, secondNumber);
+        return multiply(number1, number2);
         break;
       case "/":
-        return divide(firstNumber, secondNumber);
+        return divide(number1, number2);
         break;
       default:
         break;
     }
   }
-}
