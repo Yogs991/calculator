@@ -75,7 +75,7 @@ function equalPressed(){
     if(number1 !== "" && number2 !== "" && operator !==""){
       const result = operate(operator, parseInt(number1), parseInt(number2));
       display.value = result;
-      number1 = "";
+      number1 = result;
       number2 = "";
       operator = "";
     }
